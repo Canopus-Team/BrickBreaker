@@ -5,3 +5,5 @@ class GameObject{
         this.y = y;
     }
 }
+
+
