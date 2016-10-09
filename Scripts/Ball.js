@@ -12,8 +12,7 @@ class Ball extends GameObject{
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
-let ballPic = document.getElementById('ballPic');
 let ball = new Ball(10, 10);
 
 
-ctx.drawImage(ball.img, ball.row, ball.col);
+//ctx.drawImage(ball.img, ball.row, ball.col);
