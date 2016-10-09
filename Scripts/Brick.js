@@ -1,19 +1,21 @@
 class Brick extends GameObject {
-    constructor(color, ctx) {
+    constructor(color, ctx, x, y) {
         super();
-        this.bricksPositions = {"red": {"row": 0, "col": 0}};
-        this.size = 64;
+        this.bricksPositions = {"red": {"row": 0, "col": 0}, "purple": {"row": 0, "col": 1}, "yellow": {"row": 0, "col": 2}};
+        this.size = 33;
         this.row = this.bricksPositions[color]["row"];  //row from sprite
         this.col = this.bricksPositions[color]["col"];
         this.ctx = ctx;
+        this.x = x;
+        this.y = y;
     }
 
     draw() {
-        let ctx = this.ctx;
-        let img = this.img;
-        this.img.onload = function() {
-            ctx.drawImage(img, 0, 0);
+        let _this = this;
+        this.img.onload = function () {
+            _this.ctx.drawImage(_this.img,( _this.col * _this.size) + (_this.col * 8), _this.row, _this.size, _this.size, _this.x, _this.y,_this.size, _this.size);
         };
+
         this.img.src = "resources/sprite.png";
     }
 }
