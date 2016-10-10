@@ -11,8 +11,9 @@ function main() {
     let level = Levels[gameLevel];
 
     // Create BALL
-    let ball = new Ball(ctx);
-    let board = new Board(ball, level, ctx);
+    let ball = new Ball(CONSTANTS.ball_start_x,CONSTANTS.ball_start_y,ctx);
+    let paddle = new Paddle(CONSTANTS.paddle_start_x, CONSTANTS.paddle_start_y,ctx);
+    let board = new Board(ball, level, paddle, ctx);
 
 
     // Run GAME

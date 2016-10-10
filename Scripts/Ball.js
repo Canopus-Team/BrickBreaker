@@ -1,15 +1,12 @@
 class Ball extends GameObject {
     
-    constructor(ctx){
-        super();
+    constructor(x,y,ctx){
+        super(x,y,ctx);
         this.img.src = "resources/ball.png";
-        this.x = CONSTANTS.ball_start_x;
-        this.y = CONSTANTS.ball_start_y;
         this.directionX = CONSTANTS.direction_right;
         this.directionY = CONSTANTS.direction_up;
         this.ballMoveX = 0;
         this.level = 0;
-        this.ctx = ctx;
     }
 
     reset(){

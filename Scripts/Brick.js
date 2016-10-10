@@ -1,6 +1,6 @@
 class Brick extends GameObject {
     constructor(color, ctx, x, y) {
-        super();
+        super(x,y,ctx);
         this.bricksPositions = {
             "red": {"row": 0, "col": 0},
             "purple": {"row": 0, "col": 1},
@@ -8,12 +8,9 @@ class Brick extends GameObject {
         };
 
         this.img.src = "resources/sprite.png";
-        this.size = 33;
+        this.size = CONSTANTS.brick_size;
         this.row = this.bricksPositions[color]["row"];  //row from sprite
         this.col = this.bricksPositions[color]["col"];
-        this.ctx = ctx;
-        this.x = x;
-        this.y = y;
     }
 
     draw() {

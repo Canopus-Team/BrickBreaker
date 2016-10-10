@@ -1,14 +1,15 @@
 class Board extends GameObject {
-    constructor(ball, level, ctx) {
-        super();
+    constructor(ball, level, paddle, ctx) {
+        super(0,0,ctx);
         this.ball = ball;
         this.level = level;
-        this.ctx = ctx;
+        this.paddle = paddle;
     }
 
     draw(){
         this.drawLevel();
         this.ball.draw();
+        this.paddle.draw();
     }
 
     drawLevel() {
