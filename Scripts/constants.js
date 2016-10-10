@@ -8,5 +8,8 @@ const CONSTANTS = {
     "direction_up":"up",
     "direction_left":"left",
     "ball_size":64,
-    "player_lives":3
+    "player_lives":3,
+    "brick_width" : 68,
+    "brick_height" : 34,
+    "brick_offset" : 8
 };

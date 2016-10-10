@@ -6,7 +6,7 @@ class Brick extends GameObject {
             "purple": {"row": 0, "col": 1},
             "yellow": {"row": 0, "col": 2}
         };
-        
+
         this.img.src = "resources/sprite.png";
         this.size = 33;
         this.row = this.bricksPositions[color]["row"];  //row from sprite
@@ -17,9 +17,14 @@ class Brick extends GameObject {
     }
 
     draw() {
-        let _this = this;
-        this.img.onload = function () {
-            _this.ctx.drawImage(_this.img, ( _this.col * _this.size) + (_this.col * 8), _this.row, _this.size, _this.size, _this.x * 68, _this.y * 34, _this.size * 2, _this.size);
-        };
+        this.ctx.drawImage(this.img,
+            ( this.col * this.size) + (this.col * CONSTANTS.brick_offset),
+            this.row,
+            this.size,
+            this.size,
+            this.x * CONSTANTS.brick_width,
+            this.y * CONSTANTS.brick_height,
+            this.size * 2,
+            this.size);
     }
 }
