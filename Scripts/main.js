@@ -5,7 +5,10 @@ function main() {
     let buttonStart = document.getElementById('buttonStart');
     let isRunning = true;
     let level = getFirstLevel();
-
+    let lives = CONSTANTS.player_lives;
+    let gameLevel = 1;
+    let score = 0;
+    buttonPause.addEventListener('click', pause);
 
     // Create BALL
     let ball = new Ball(ctx);
@@ -26,22 +29,42 @@ function main() {
 
     function update() {
         ball.move();
-        buttonPause.addEventListener('click', pause);
-        buttonStart.addEventListener('click', start);
+        checkIfOut(ball.y);
     }
 
     function draw() {
-        ctx.clearRect(0, 0, 600, 480);
+        ctx.clearRect(0, 0, CONSTANTS.canvas_width, CONSTANTS.canvas_height);
         drawLevel(level,ctx);
         ball.draw();
     }
 
     function pause() {
-        isRunning = false;
+        if(isRunning){
+            buttonPause.textContent  = "Start";
+            isRunning = false;
+        } else {
+            buttonPause.textContent  = "Stop";
+            isRunning = true;
+        }
     }
 
     function start() {
         isRunning = true;
+    }
+    
+    function checkIfOut(ballY) {
+        if(ballY > CONSTANTS.canvas_height - CONSTANTS.ball_size){
+            lives--;
+            score -= 100;
+            if(lives <= 0){
+                lives = CONSTANTS.player_lives;
+                score = 0;
+                createBricks();
+
+            }
+            ball.reset();
+            isRunning = false;
+        }
     }
 
     function createBricks() {

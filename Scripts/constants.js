@@ -7,5 +7,6 @@ const CONSTANTS = {
     "direction_down":"down",
     "direction_up":"up",
     "direction_left":"left",
-    "ball_size":64
+    "ball_size":64,
+    "player_lives":3
 };
