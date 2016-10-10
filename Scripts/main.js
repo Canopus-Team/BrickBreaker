@@ -4,7 +4,7 @@ function main() {
     let buttonPause = document.getElementById('buttonPause');
     let buttonStart = document.getElementById('buttonStart');
     let isRunning = true;
-    let level = getFirstLevel();
+    let bricksLevel = getFirstLevel();
     let lives = CONSTANTS.player_lives;
     let gameLevel = 1;
     let score = 0;
@@ -12,9 +12,6 @@ function main() {
 
     // Create BALL
     let ball = new Ball(ctx);
-
-    // Create BRICKS
-    createBricks();
 
     // Run GAME
     run();
@@ -34,7 +31,7 @@ function main() {
 
     function draw() {
         ctx.clearRect(0, 0, CONSTANTS.canvas_width, CONSTANTS.canvas_height);
-        drawLevel(level,ctx);
+        drawLevel(bricksLevel,ctx);
         ball.draw();
     }
 
@@ -59,7 +56,7 @@ function main() {
             if(lives <= 0){
                 lives = CONSTANTS.player_lives;
                 score = 0;
-                createBricks();
+                drawLevel(bricks, ctx);
 
             }
             ball.reset();
@@ -67,18 +64,18 @@ function main() {
         }
     }
 
-    function createBricks() {
-        let colors = ['red', 'purple', 'yellow'];
-
-        for (let i = 0; i < 640; i += 34) {
-            for (let j = 0; j < 170; j += 34) {
-                let rnd = Math.floor(Math.random() * 3);
-                let brick = new Brick(colors[rnd], ctx, i, j);
-                brick.draw();
-            }
-        }
-
-    }
+    // function createBricks() {
+    //     let colors = ['red', 'purple', 'yellow'];
+    //
+    //     for (let i = 0; i < 640; i += 34) {
+    //         for (let j = 0; j < 170; j += 34) {
+    //             let rnd = Math.floor(Math.random() * 3);
+    //             let brick = new Brick(colors[rnd], ctx, i, j);
+    //             brick.draw();
+    //         }
+    //     }
+    //
+    // }
 
     function getFirstLevel() {
         let level = [
