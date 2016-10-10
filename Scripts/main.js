@@ -3,18 +3,20 @@ function main() {
     let ctx = canvas.getContext('2d');
     let buttonPause = document.getElementById('buttonPause');
     let buttonStart = document.getElementById('buttonStart');
-    let isRunning = true;
+    let isRunning = false;
     let lives = CONSTANTS.player_lives;
     let gameLevel = 0;
     let score = 0;
+
+    // events
     buttonPause.addEventListener('click', pause);
+    window.addEventListener('keydown', handleInput);
+
+    // init game
     let level = Levels[gameLevel];
-
-    // Create BALL
-    let ball = new Ball(CONSTANTS.ball_start_x,CONSTANTS.ball_start_y,ctx);
-    let paddle = new Paddle(CONSTANTS.paddle_start_x, CONSTANTS.paddle_start_y,ctx);
+    let ball = new Ball(CONSTANTS.ball_start_x, CONSTANTS.ball_start_y, ctx);
+    let paddle = new Paddle(CONSTANTS.paddle_start_x, CONSTANTS.paddle_start_y, ctx);
     let board = new Board(ball, level, paddle, ctx);
-
 
     // Run GAME
     run();
@@ -47,8 +49,19 @@ function main() {
         }
     }
 
-    function start() {
-        isRunning = true;
+    function handleInput(event) {
+        let key = event.code;
+        switch (key) {
+            case  'ArrowLeft':
+                paddle.x -= CONSTANTS.paddle_speed;
+                break;
+            case  'ArrowRight':
+                paddle.x += CONSTANTS.paddle_speed;
+                break;
+            case  'Space':
+                pause();
+                break;
+        }
     }
 
     function checkIfOut(ballY) {
@@ -58,14 +71,12 @@ function main() {
             if (lives <= 0) {
                 lives = CONSTANTS.player_lives;
                 score = 0;
-                board.drawLevel(bricks, ctx);
+                board.drawLevel();
             }
             board.ball.reset();
             isRunning = false;
         }
     }
-
-
 }
 
 main();

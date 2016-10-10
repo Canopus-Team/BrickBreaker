@@ -18,5 +18,6 @@ const CONSTANTS = {
     "paddle_x" : 0,
     "paddle_y" : 200,
     "paddle_width" : 100,
-    "paddle_height" : 25
+    "paddle_height" : 25,
+    "paddle_speed" : 40
 };
