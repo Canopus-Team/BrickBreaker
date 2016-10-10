@@ -1,10 +1,11 @@
 function main() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
+    let buttonPause = document.getElementById('buttonPause');
     let buttonStart = document.getElementById('buttonStart');
     let isRunning = true;
     let level = getFirstLevel();
-    drawLevel(level,ctx);
+
 
     // Create BALL
     let ball = new Ball(ctx);
@@ -19,17 +20,28 @@ function main() {
          if(isRunning){
             update();
             draw();
-            requestAnimationFrame(run);
         }
+        requestAnimationFrame(run);
     }
 
     function update() {
         ball.move();
+        buttonPause.addEventListener('click', pause);
+        buttonStart.addEventListener('click', start);
     }
 
     function draw() {
         ctx.clearRect(0, 0, 600, 480);
+        drawLevel(level,ctx);
         ball.draw();
+    }
+
+    function pause() {
+        isRunning = false;
+    }
+
+    function start() {
+        isRunning = true;
     }
 
     function createBricks() {

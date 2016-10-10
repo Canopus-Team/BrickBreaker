@@ -1,49 +1,49 @@
-class Ball extends GameObject{
-
+class Ball extends GameObject {
+    
     constructor(ctx){
         super();
         this.img.src = "resources/ball.png";
-        this.x = 268;  //row from sprite
-        this.y = 420;
-        this.directionX = "right";
-        this.directionY = "up";
+        this.x = CONSTANTS.ball_start_x;
+        this.y = CONSTANTS.ball_start_y;
+        this.directionX = CONSTANTS.direction_right;
+        this.directionY = CONSTANTS.direction_up;
         this.ballMoveX = 0;
         this.level = 0;
         this.ctx = ctx;
     }
 
     reset(){
-        this.x = 268;
-        this.y = 420;
-        this.directionX = "right";
-        this.directionY = "up";
+        this.x = CONSTANTS.ball_start_x;
+        this.y = CONSTANTS.ball_start_y;
+        this.directionX = CONSTANTS.direction_right;
+        this.directionY = CONSTANTS.direction_up;
     }
 
     nextLevel(){
-        this.level += 64;
+        this.level += CONSTANTS.ball_size;
         if(this.level > 256){
             this.level = 0;
         }
     }
 
     draw(){
-        this.ctx.drawImage(this.img, this.ballMoveX , this.level, 64, 64, this.x, this.y, 50,50);
+        this.ctx.drawImage(this.img, this.ballMoveX , this.level, CONSTANTS.ball_size, CONSTANTS.ball_size, this.x, this.y, 50,50);
     }
     
     
     move() {
-        this.ballMoveX += 64;
+        this.ballMoveX += CONSTANTS.ball_size;
         if(this.ballMoveX > 768){
             this.ballMoveX = 0;
         }
 
-        this.x = setDirection(this.directionX, this.x, "right");
+        this.x = setDirection(this.directionX, this.x, CONSTANTS.direction_right);
 
-        this.y = setDirection(this.directionY, this.y, "down");
+        this.y = setDirection(this.directionY, this.y, CONSTANTS.direction_down);
 
-        this.directionX = checkIfOut(this.x, 600, "right", "left", this.directionX);
+        this.directionX = checkIfOut(this.x, CONSTANTS.canvas_width, CONSTANTS.direction_right, CONSTANTS.direction_left, this.directionX);
 
-        this.directionY = checkIfOut(this.y, 480, "down", "up", this.directionY);
+        this.directionY = checkIfOut(this.y, CONSTANTS.canvas_height, CONSTANTS.direction_down, CONSTANTS.direction_up, this.directionY);
 
 
         function checkIfOut(cord, end, dirUp, dirDown, currentDir) {
@@ -67,15 +67,3 @@ class Ball extends GameObject{
     }
 
 }
-    // let canvas = document.getElementById('canvas');
-    // let ctx = canvas.getContext('2d');
-    // let ball = new Ball();
-    //
-    // run();
-    // function run() {
-    //     ctx.clearRect(0, 0, 600, 480);
-    //     ball.move();
-    //     ball.draw(ctx);
-    //
-    //     requestAnimationFrame(run);
-    // }
