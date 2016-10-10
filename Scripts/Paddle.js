@@ -15,4 +15,8 @@ class Paddle extends GameObject{
             CONSTANTS.paddle_width,
             CONSTANTS.paddle_height);
     }
+
+    reset(){
+        this.x = CONSTANTS.paddle_start_x;
+    }
 }

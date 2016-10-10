@@ -19,12 +19,13 @@ function main() {
     let board = new Board(ball, level, paddle, ctx);
 
     // Run GAME
+    draw();
     run();
 
     function run() {
         if (isRunning) {
-            update();
             draw();
+            update();
         }
         requestAnimationFrame(run);
     }
@@ -74,6 +75,8 @@ function main() {
                 board.drawLevel();
             }
             board.ball.reset();
+            board.paddle.reset();
+            draw();
             isRunning = false;
         }
     }
