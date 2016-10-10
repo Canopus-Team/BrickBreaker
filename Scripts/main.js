@@ -82,5 +82,9 @@ function main() {
     }
 }
 
-main();
+window.onload = function() {
+    main();
+};
+
+
 
