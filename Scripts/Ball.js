@@ -1,6 +1,6 @@
 class Ball extends GameObject{
 
-    constructor(){
+    constructor(ctx){
         super();
         this.img.src = "resources/ball.png";
         this.x = 268;  //row from sprite
@@ -9,6 +9,7 @@ class Ball extends GameObject{
         this.directionY = "up";
         this.ballMoveX = 0;
         this.level = 0;
+        this.ctx = ctx;
     }
 
     reset(){
@@ -25,10 +26,11 @@ class Ball extends GameObject{
         }
     }
 
-    draw(ctx){
-        ctx.drawImage(this.img, this.ballMoveX , this.level, 64, 64, this.x, this.y, 50,50);
+    draw(){
+        this.ctx.drawImage(this.img, this.ballMoveX , this.level, 64, 64, this.x, this.y, 50,50);
     }
-
+    
+    
     move() {
         this.ballMoveX += 64;
         if(this.ballMoveX > 768){
