@@ -6,7 +6,7 @@ function main() {
     let lives = CONSTANTS.player_lives;
     let gameLevel = 0;
     let score = 0;
-
+    
     // events
     buttonPause.addEventListener('click', pause);
     window.addEventListener('keydown', handleInput);
@@ -16,7 +16,7 @@ function main() {
     let ball = new Ball(CONSTANTS.ball_start_x, CONSTANTS.ball_start_y, ctx);
     let paddle = new Paddle(CONSTANTS.paddle_start_x, CONSTANTS.paddle_start_y, ctx);
     let board = new Board(ball, level, paddle, ctx);
-    let bricksCount = board.bricks.length;
+    // let bricksCount = level.filter(x => x != "empty").length;
 
     // Run GAME
     draw();
@@ -74,34 +74,34 @@ function main() {
                 break;
         }
     }
-    
-    function checkBricks() {
-        if(bricksCount == 0){
-            ball.reset();
-            level++;
-            ball.nextLevel();
-            score += 100;
-            board = new Board(ball, level, paddle, ctx);
-            return;
-        }
+    //
+    // function checkBricks() {
+    //     if(bricksCount == 0){
+    //         ball.reset();
+    //         level++;
+    //         ball.nextLevel();
+    //         score += 100;
+    //         board = new Board(ball, level, paddle, ctx);
+    //         return;
+    //     }
+    //
+    //     for(let brick of board.bricks){
+    //         if(hitBottom(ball.x, ball.y, brick.x, brick.y)){
+    //             score += 50;
+    //             ball.directionY = CONSTANTS.direction_up;
+    //             bricksCount--;
+    //
+    //         }
+    //     }
+    // }
 
-        for(let brick of board.bricks){
-            if(hitBottom(ball.x, ball.y, brick.x, brick.y)){
-                score += 50;
-                ball.directionY = CONSTANTS.direction_up;
-                bricksCount--;
-                
-            }
-        }
-    }
-
-    function hitBottom(ballX, ballY, brickX, brickY) {
-        if(ballX >= brickX && ballX <= brickX + CONSTANTS.brick_width ||
-            ballX + CONSTANTS.ball_size > brickX && ballX + CONSTANTS.ball_size <= brickX + CONSTANTS.brick_width){
-            return true;
-        }
-        return false;
-    }
+    // function hitBottom(ballX, ballY, brickX, brickY) {
+    //     if(ballX >= brickX && ballX <= brickX + CONSTANTS.brick_width ||
+    //         ballX + CONSTANTS.ball_size > brickX && ballX + CONSTANTS.ball_size <= brickX + CONSTANTS.brick_width){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     function checkIfOut(ballY) {
         if (ballY > CONSTANTS.canvas_height - CONSTANTS.ball_size) {
