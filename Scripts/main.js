@@ -40,6 +40,8 @@ function main() {
     function draw() {
         ctx.clearRect(0, 0, CONSTANTS.canvas_width, CONSTANTS.canvas_height);
         board.draw();
+        ctx.fillText(`Score: ${score}`, 0, 10);
+        ctx.fillText(`Lives: ${lives}`, 0, 30);
     }
 
     function pause() {
@@ -95,13 +97,13 @@ function main() {
     //     }
     // }
 
-    // function hitBottom(ballX, ballY, brickX, brickY) {
-    //     if(ballX >= brickX && ballX <= brickX + CONSTANTS.brick_width ||
-    //         ballX + CONSTANTS.ball_size > brickX && ballX + CONSTANTS.ball_size <= brickX + CONSTANTS.brick_width){
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    function hitBottom(ballX, ballY, brickX, brickY) {
+        if(ballX >= brickX && ballX <= brickX + CONSTANTS.brick_width ||
+            ballX + CONSTANTS.ball_size > brickX && ballX + CONSTANTS.ball_size <= brickX + CONSTANTS.brick_width){
+            return true;
+        }
+        return false;
+    }
 
     function checkIfOut(ballY) {
         if (ballY > CONSTANTS.canvas_height - CONSTANTS.ball_size) {

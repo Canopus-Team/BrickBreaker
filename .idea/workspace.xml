@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94b755e8-57ec-4736-addc-6aad1815c193" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Ball.js" afterPath="$PROJECT_DIR$/Scripts/Ball.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Board.js" afterPath="$PROJECT_DIR$/Scripts/Board.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/main.js" afterPath="$PROJECT_DIR$/Scripts/main.js" />
     </list>
     <ignored path="BrickBreaker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/Scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="37" selection-start-line="98" selection-start-column="37" selection-end-line="98" selection-end-column="37" />
+              <caret line="127" column="37" selection-start-line="127" selection-start-column="37" selection-end-line="127" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -40,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/Scripts/constants.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+              <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -93,8 +90,8 @@
       <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6024499">
-              <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.6971047">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/Scripts/Ball.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -151,8 +148,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
+    <option name="width" value="878" />
     <option name="height" value="1036" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -312,7 +308,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="7" />
+    <frame x="-8" y="0" width="878" height="1036" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2726218" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -592,18 +588,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="37" selection-start-line="98" selection-start-column="37" selection-end-line="98" selection-end-column="37" />
+          <caret line="127" column="37" selection-start-line="127" selection-start-column="37" selection-end-line="127" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -619,15 +607,23 @@
     <entry file="file://$PROJECT_DIR$/Scripts/Ball.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6024499">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.6971047">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
