@@ -7,6 +7,7 @@ class Ball extends GameObject {
         this.directionY = CONSTANTS.direction_up;
         this.ballMoveX = 0;
         this.level = 0;
+        this.radius = CONSTANTS.ball_size/2;
     }
 
     reset(){

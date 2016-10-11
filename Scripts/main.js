@@ -55,10 +55,18 @@ function main() {
         let key = event.code;
         switch (key) {
             case  'ArrowLeft':
-                paddle.x -= CONSTANTS.paddle_speed;
+                if (paddle.x - CONSTANTS.paddle_speed >= 0) {
+                    paddle.x -= CONSTANTS.paddle_speed;
+                } else {
+                    paddle.x = 0;
+                }
                 break;
             case  'ArrowRight':
-                paddle.x += CONSTANTS.paddle_speed;
+                if(paddle.x + CONSTANTS.paddle_speed <= CONSTANTS.canvas_width - CONSTANTS.paddle_width) {
+                    paddle.x += CONSTANTS.paddle_speed;
+                } else {
+                    paddle.x = CONSTANTS.canvas_width - CONSTANTS.paddle_width;
+                }
                 break;
             case  'Space':
                 pause();
@@ -75,42 +83,47 @@ function main() {
                 score = 0;
                 board.drawLevel();
             }
+
             board.ball.reset();
             board.paddle.reset();
             draw();
             isRunning = false;
         }
     }
-    
+
     function checkCollisions() {
-        if(checkPaddleHitBallX() && checkPaddleHitBallY()){
+        if (checkPaddleHitBallX() && checkPaddleHitBallY()) {
             ball.directionY = "up";
         }
+
+        board.checkBrickCollisions();
     }
 
     function checkPaddleHitBallX() {
         let ballXend = ball.x + CONSTANTS.ball_size;
         let paddleXend = paddle.x + CONSTANTS.paddle_width;
 
-        if(ball.x >= paddle.x && ball.x <= paddleXend ||
-            ballXend >= paddle.x && ballXend <= paddleXend){
+        if (ball.x >= paddle.x && ball.x <= paddleXend ||
+            ballXend >= paddle.x && ballXend <= paddleXend) {
             return true;
         }
+
         return false;
     }
 
     function checkPaddleHitBallY() {
         let ballYend = ball.y + CONSTANTS.ball_size;
 
-        if(ballYend == paddle.y + 20){
+        if (ballYend == paddle.y + 20) {
             return true;
         }
+
         return false;
     }
 
 }
 
-window.onload = function() {
+window.onload = function () {
     main();
 };
 
