@@ -26,8 +26,7 @@ class Ball extends GameObject {
     draw(){
         this.ctx.drawImage(this.img, this.ballMoveX , this.level, CONSTANTS.ball_size, CONSTANTS.ball_size, this.x, this.y, 50,50);
     }
-    
-    
+
     move() {
         this.ballMoveX += CONSTANTS.ball_size;
         if(this.ballMoveX > 768){

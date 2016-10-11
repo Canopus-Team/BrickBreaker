@@ -2,7 +2,6 @@ function main() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
     let buttonPause = document.getElementById('buttonPause');
-    let buttonStart = document.getElementById('buttonStart');
     let isRunning = false;
     let lives = CONSTANTS.player_lives;
     let gameLevel = 0;
@@ -32,7 +31,9 @@ function main() {
 
     function update() {
         ball.move();
+        checkCollisions();
         checkIfOut(ball.y);
+
     }
 
     function draw() {
@@ -80,6 +81,33 @@ function main() {
             isRunning = false;
         }
     }
+    
+    function checkCollisions() {
+        if(checkPaddleHitBallX() && checkPaddleHitBallY()){
+            ball.directionY = "up";
+        }
+    }
+
+    function checkPaddleHitBallX() {
+        let ballXend = ball.x + CONSTANTS.ball_size;
+        let paddleXend = paddle.x + CONSTANTS.paddle_width;
+
+        if(ball.x >= paddle.x && ball.x <= paddleXend ||
+            ballXend >= paddle.x && ballXend <= paddleXend){
+            return true;
+        }
+        return false;
+    }
+
+    function checkPaddleHitBallY() {
+        let ballYend = ball.y + CONSTANTS.ball_size;
+
+        if(ballYend == paddle.y + 20){
+            return true;
+        }
+        return false;
+    }
+
 }
 
 window.onload = function() {
