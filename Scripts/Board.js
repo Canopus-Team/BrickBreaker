@@ -47,6 +47,7 @@ class Board extends GameObject {
 
     }
 
+
     isColide(brick) {
         let balX = this.ball.x + this.ball.radius;
         let balY = this.ball.y + this.ball.radius;
@@ -68,23 +69,14 @@ class Board extends GameObject {
         let y1 = (brick.y + brick.h) / 2;
         let dx = y1 - y2;
         let dy = x1 - x2;
-        // left
+
         if (dx < 0 && Math.abs(dx) > (brick.x / 2 + brick.w / 2)) {
             this.ball.directionX = CONSTANTS.direction_left;
-        }
-
-        // right
-        if (dx > 0 && Math.abs(dx) > (brick.x / 2 + brick.w / 2)) {
+        }else if (dx > 0 && Math.abs(dx) > (brick.x / 2 + brick.w / 2)) {
             this.ball.directionX = CONSTANTS.direction_right;
-        }
-
-        // bottom
-        if (dy < 0 && Math.abs(dy) > (brick.x / 2 + brick.w / 2)) {
-            this.directionY = CONSTANTS.direction_down;
-        }
-
-        // top
-        if (dy > 0 && Math.abs(dy) > (brick.x / 2 + brick.w / 2)) {
+        }else if (dy < 0 && Math.abs(dy) > (brick.x / 2 + brick.w / 2)) {
+            this.ball.directionY = CONSTANTS.direction_down;
+        }else if (dy > 0 && Math.abs(dy) > (brick.x / 2 + brick.w / 2)) {
             this.ball.directionX = CONSTANTS.direction_up;
         }
     }
