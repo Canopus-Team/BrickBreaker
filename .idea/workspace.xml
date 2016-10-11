@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94b755e8-57ec-4736-addc-6aad1815c193" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Ball.js" afterPath="$PROJECT_DIR$/Scripts/Ball.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Board.js" afterPath="$PROJECT_DIR$/Scripts/Board.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/main.js" afterPath="$PROJECT_DIR$/Scripts/main.js" />
     </list>
     <ignored path="BrickBreaker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,8 +90,8 @@
       <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6024499">
-              <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.6057907">
+              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -312,7 +309,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="7" />
+    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2726218" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -626,8 +623,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6024499">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.6057907">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
           <folding />
         </state>
       </provider>
