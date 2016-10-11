@@ -40,7 +40,7 @@ class Board extends GameObject {
                 brick.y = i * CONSTANTS.brick_height;
                 brick.x = j * CONSTANTS.brick_width;
                 if (this.level[i][j] != "empty" && this.isColide(brick)) {
-                        console.log("hited");
+                    this.level[i][j] = "empty"
                 }
             }
         }
@@ -48,8 +48,10 @@ class Board extends GameObject {
     }
 
     isColide(brick) {
-        let deltaX = this.ball.x - Math.max(brick.x, Math.min(this.ball.x, brick.x + brick.w));
-        let deltaY = this.ball.y - Math.max(brick.y, Math.min(this.ball.y, brick.y + brick.h));
+        let balX = this.ball.x + this.ball.radius;
+        let balY = this.ball.y + this.ball.radius;
+        let deltaX = balX - Math.max(brick.x, Math.min(balX, brick.x + brick.w));
+        let deltaY = balY - Math.max(brick.y, Math.min(balY, brick.y + brick.h));
 
         return (deltaX * deltaX + deltaY * deltaY) < (this.ball.radius * this.ball.radius);
     }
