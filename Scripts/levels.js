@@ -1,5 +1,4 @@
 const Levels  = [getFirstLevel(), getSecondLevel()];
-
 function getFirstLevel() {
     return [
         ["empty", "empty", "red", "empty", "empty", "empty", "empty", "red", "empty", "empty"],
@@ -11,6 +10,12 @@ function getFirstLevel() {
 }
 
 function getSecondLevel() {
-    return [];
+    return [
+        ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red"],
+        ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red"],
+        ["purple", "empty", "purple", "empty", "purple", "empty", "purple", "empty", "purple", "empty"],
+        ["empty", "red", "empty", "red", "empty", "red", "empty", "red", "empty", "red"],
+        ["yellow", "empty", "yellow", "empty", "yellow", "empty", "yellow", "empty", "yellow", "empty"]
+    ];
 }
 

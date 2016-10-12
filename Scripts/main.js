@@ -34,7 +34,10 @@ function main() {
         ball.move();
         checkCollisions();
         checkIfOut(ball.y);
-
+        if(board.checkLevelClear()){
+            gameLevel++;
+            board.level = Levels[gameLevel];
+        }
     }
 
     function draw() {
@@ -127,7 +130,9 @@ function main() {
             ball.directionY = "up";
         }
 
-        board.checkBrickCollisions();
+       if(board.checkBrickCollisions()){
+           score++;
+       }
     }
 
     function checkPaddleHitBallX() {

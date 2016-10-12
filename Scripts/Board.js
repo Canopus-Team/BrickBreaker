@@ -37,10 +37,12 @@ class Board extends GameObject {
                 brick.x = j * CONSTANTS.brick_width;
                 if (this.level[i][j] != "empty" && this.isColide(brick)) {
                     this.level[i][j] = "empty";
+                    return true;
                 }
             }
         }
 
+        return false;
     }
 
     isColide(brick) {
@@ -72,28 +74,28 @@ class Board extends GameObject {
         }
 
         // bottom left corner
-        if(this.calculate2dDistance(brick.x, brick.y + brick.h,  balX,balY) <= this.ball.radius){
+        if(Board.calculate2dDistance(brick.x, brick.y + brick.h,  balX,balY) <= this.ball.radius){
             this.ball.directionX = "left";
             this.ball.directionY = "down";
             return true;
         }
 
         // bottom right corner
-        if(this.calculate2dDistance(brick.x + brick.w, brick.y + brick.h,  balX,balY) <= this.ball.radius){
+        if(Board.calculate2dDistance(brick.x + brick.w, brick.y + brick.h,  balX,balY) <= this.ball.radius){
             this.ball.directionX = "right";
             this.ball.directionY = "down";
             return true;
         }
 
         // top right corner
-        if(this.calculate2dDistance(brick.x + brick.w, brick.y,  balX,balY) <= this.ball.radius){
+        if(Board.calculate2dDistance(brick.x + brick.w, brick.y,  balX,balY) <= this.ball.radius){
             this.ball.directionX = "right";
             this.ball.directionY = "up";
             return true;
         }
 
         // top left corner
-        if(this.calculate2dDistance(brick.x, brick.y,  balX,balY) <= this.ball.radius){
+        if(Board.calculate2dDistance(brick.x, brick.y,  balX,balY) <= this.ball.radius){
             this.ball.directionX = "left";
             this.ball.directionY = "up";
             return true;
@@ -103,7 +105,17 @@ class Board extends GameObject {
         return false;
     }
 
-    calculate2dDistance(x1,y1, x2,y2){
+    static calculate2dDistance(x1, y1, x2, y2){
         return Math.sqrt((x1-x2)*(x1-x2) + (y1 - y2) * (y1 - y2));
+    }
+
+    checkLevelClear(){
+        for(let row of this.level){
+           if(row.filter(x => x!= "empty").length > 0){
+               return false;
+           }
+        }
+
+        return true;
     }
 }
