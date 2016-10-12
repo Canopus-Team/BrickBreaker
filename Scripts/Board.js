@@ -91,6 +91,31 @@ class Board extends GameObject {
             this.ball.directionY = "down";
             return true;
         }
+        
+        // check up
+        if(balX >= brick.x && balX <= brick.x + brick.w && this.ball.y + CONSTANTS.ball_size < brick.y + brick.h && this.ball.y + CONSTANTS.ball_size >= brick.y){
+            this.ball.directionY = "up";
+            return true;
+        }
+
+        // check left
+        if(balY >= brick.y && balY <= brick.y + brick.h && this.ball.x + CONSTANTS.ball_size < brick.x + brick.w && this.ball.x +  CONSTANTS.ball_size >= brick.x){
+            this.ball.directionX = "left";
+            return true;
+        }
+
+        // check right
+        if(balY >= brick.y && balY <= brick.y + brick.h && this.ball.x > brick.x && this.ball.x <= brick.x + brick.w){
+            this.ball.directionX = "right";
+            return true;
+        }
+
+        // bottom left corner
+        if(Board.calculate2dDistance(brick.x, brick.y + brick.h,  balX,balY) <= this.ball.radius){
+            this.ball.directionX = "left";
+            this.ball.directionY = "down";
+            return true;
+        }
 
         // bottom right corner
         if(Board.calculate2dDistance(brick.x + brick.w, brick.y + brick.h,  balX,balY) <= this.ball.radius){
@@ -121,13 +146,4 @@ class Board extends GameObject {
         return Math.sqrt((x1-x2)*(x1-x2) + (y1 - y2) * (y1 - y2));
     }
 
-    checkLevelClear(){
-        for(let row of this.level){
-            if(row.filter(x => x!= "empty").length > 0){
-                return false;
-            }
-        }
-
-        return true;
-    }
 }

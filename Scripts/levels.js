@@ -17,5 +17,5 @@ function getLevel(level) {
             ["red", "empty", "red", "empty", "empty", "empty", "empty", "red", "empty", "red"]
         ];
     }
-   
 }
+
