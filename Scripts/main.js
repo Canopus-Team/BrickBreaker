@@ -101,12 +101,22 @@ function main() {
             ball.directionY = "up";
         }
 
+        // CHECK IF ONE OF BRICKS IS HIT
         if(board.checkBrickCollisions()){
             score+=10;
             bricksCount--;
         }
 
+        // CHECK IF LEVEL IS UP
         if(bricksCount == 0){
+
+            // GAME END
+            if(gameLevel == 2){
+                isRunning = false;
+                ctx.font = "36px ariel";
+                ctx.fillText(`YOU WIN! CONGRATULATIONS!`, 20, CONSTANTS.canvas_height/2);
+                return;
+            }
             ctx.clearRect(0,0,CONSTANTS.canvas_width, CONSTANTS.canvas_height);
             score += 100;
             ball.nextLevel();
