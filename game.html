@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Brick Breaker</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
-    <canvas id="canvas" width="680" height="480" style="border: 2px solid black; background-color: #CECECE"></canvas>
+<div class="wrapper">
+    <h1>Brick Breacker</h1>
+    <canvas id="canvas" width="680" height="480" ></canvas>
+    <div class="panel">
+        <p>
+            <span>Score: </span><span class="score"></span>
+        </p>
+        <p>
+            <span>Lives: </span><span class="lives"></span>
+        </p>
+        <p>
+            <span>Bricks count: </span><span class="bricks"></span>
+        </p>
+    </div>
     <button type="button" id="button">Start</button>
     <img src="resources/sprite.png" style="display: none" id="sprite"/>
     <img src="resources/ball.png" style="display: none" id="ballPic"/>
@@ -19,6 +32,6 @@
     <script src="Scripts/Board.js"></script>
     <script src="Scripts/game-engine.js"></script>
     <script src="Scripts/main.js"></script>
-
+</div>
 </body>
 </html>

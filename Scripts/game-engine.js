@@ -78,6 +78,7 @@ function gameEngine(ctx) {
                 break;
         }
     }
+
     function checkIfOut(ballY) {
         if (ballY > CONSTANTS.canvas_height - CONSTANTS.ball_size) {
             lives--;
@@ -161,5 +162,3 @@ function gameEngine(ctx) {
     }
 
 }
-
-gameEngine();

@@ -10,9 +10,20 @@ class Board extends GameObject {
         this.drawLevel();
         this.ball.draw();
         this.paddle.draw();
-        this.ctx.fillText(`Score: ${score}`, 0, 300);
-        this.ctx.fillText(`Lives: ${lives}`, 0, 320);
-        this.ctx.fillText(`Bricks count: ${bricksCount}`,0, 340 );
+        this.fillPanel(score, lives, bricksCount);
+        // this.ctx.fillText(`Score: ${score}`, 0, 300);
+        // this.ctx.fillText(`Lives: ${lives}`, 0, 320);
+        // this.ctx.fillText(`Bricks count: ${bricksCount}`,0, 340 );
+    }
+
+    fillPanel(score, lives, bricksCount){
+        let s = document.getElementsByClassName('score')[0];
+        let l = document.getElementsByClassName('lives')[0];
+        let b = document.getElementsByClassName('bricks')[0];
+
+        s.innerText = score;
+        l.innerText = lives;
+        b.innerText = bricksCount;
     }
     
     getBricksCount(){
