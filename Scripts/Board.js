@@ -6,10 +6,13 @@ class Board extends GameObject {
         this.paddle = paddle;
     }
 
-    draw() {
+    draw(score, lives, bricksCount) {
         this.drawLevel();
         this.ball.draw();
         this.paddle.draw();
+        this.ctx.fillText(`Score: ${score}`, 0, 300);
+        this.ctx.fillText(`Lives: ${lives}`, 0, 320);
+        this.ctx.fillText(`Bricks count: ${bricksCount}`,0, 340 );
     }
     
     getBricksCount(){
