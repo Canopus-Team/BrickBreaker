@@ -2,14 +2,14 @@ function main() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
     ctx.font = "24px ariel";
-    let buttonPause = document.getElementById('buttonPause');
+    let button = document.getElementById('button');
     let isRunning = false;
     let lives = CONSTANTS.player_lives;
     let gameLevel = 1;
     let score = 0;
 
     // events
-    buttonPause.addEventListener('click', pause);
+    button.addEventListener('click', pause);
     window.addEventListener('keydown', handleInput);
 
     // init game
@@ -47,10 +47,10 @@ function main() {
 
     function pause() {
         if (isRunning) {
-            buttonPause.textContent = "Start";
+            button.textContent = "Start";
             isRunning = false;
         } else {
-            buttonPause.textContent = "Stop";
+            button.textContent = "Stop";
             isRunning = true;
         }
     }

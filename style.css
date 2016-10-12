@@ -1,3 +1,21 @@
 h1 {
     color:red;
 }
+#canvas{
+    display: block;
+}
+#button {
+    margin-top: 10px;
+    margin-left: 300px;
+    background-color: blueviolet;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: #fff;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    border:none;
+    width: 80px;
+    height: 40px;
+}
