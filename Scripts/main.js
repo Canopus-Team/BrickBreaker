@@ -1,7 +1,7 @@
 function main() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
-    ctx.font = '16px ariel';
+    ctx.font = "24px ariel";
     let buttonPause = document.getElementById('buttonPause');
     let isRunning = false;
     let lives = CONSTANTS.player_lives;
@@ -13,11 +13,11 @@ function main() {
     window.addEventListener('keydown', handleInput);
 
     // init game
-    let level = Levels[gameLevel];
+    let level = getLevel(gameLevel);
     let ball = new Ball(CONSTANTS.ball_start_x, CONSTANTS.ball_start_y, ctx);
     let paddle = new Paddle(CONSTANTS.paddle_start_x, CONSTANTS.paddle_start_y, ctx);
     let board = new Board(ball, level, paddle, ctx);
-    // let bricksCount = level.filter(x => x != "empty").length;
+    let bricksCount = board.getBricksCount();
 
     // Run GAME
     draw();
@@ -35,15 +35,14 @@ function main() {
         ball.move();
         checkCollisions();
         checkIfOut(ball.y);
-
     }
 
     function draw() {
         ctx.clearRect(0, 0, CONSTANTS.canvas_width, CONSTANTS.canvas_height);
         board.draw();
-        ctx.fillText(`Score: ${score}`, 0, 20);
-        ctx.fillText(`Lives: ${lives}`, 0, 40);
-        ctx.fillText(`Level: ${gameLevel}`,0, 60);
+        ctx.fillText(`Score: ${score}`, 0, 300);
+        ctx.fillText(`Lives: ${lives}`, 0, 320);
+        ctx.fillText(`Bricks count: ${bricksCount}`,0, 340 );
     }
 
     function pause() {
@@ -67,7 +66,7 @@ function main() {
                 }
                 break;
             case  'ArrowRight':
-                if (paddle.x + CONSTANTS.paddle_speed <= CONSTANTS.canvas_width - CONSTANTS.paddle_width) {
+                if(paddle.x + CONSTANTS.paddle_speed <= CONSTANTS.canvas_width - CONSTANTS.paddle_width) {
                     paddle.x += CONSTANTS.paddle_speed;
                 } else {
                     paddle.x = CONSTANTS.canvas_width - CONSTANTS.paddle_width;
@@ -78,36 +77,6 @@ function main() {
                 break;
         }
     }
-
-    //
-    // function checkBricks() {
-    //     if(bricksCount == 0){
-    //         ball.reset();
-    //         level++;
-    //         ball.nextLevel();
-    //         score += 100;
-    //         board = new Board(ball, level, paddle, ctx);
-    //         return;
-    //     }
-    //
-    //     for(let brick of board.bricks){
-    //         if(hitBottom(ball.x, ball.y, brick.x, brick.y)){
-    //             score += 50;
-    //             ball.directionY = CONSTANTS.direction_up;
-    //             bricksCount--;
-    //
-    //         }
-    //     }
-    // }
-
-    // function hitBottom(ballX, ballY, brickX, brickY) {
-    //     if(ballX >= brickX && ballX <= brickX + CONSTANTS.brick_width ||
-    //         ballX + CONSTANTS.ball_size > brickX && ballX + CONSTANTS.ball_size <= brickX + CONSTANTS.brick_width){
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
     function checkIfOut(ballY) {
         if (ballY > CONSTANTS.canvas_height - CONSTANTS.ball_size) {
             lives--;
@@ -115,8 +84,9 @@ function main() {
             if (lives <= 0) {
                 lives = CONSTANTS.player_lives;
                 score = 0;
-                level = Levels[getFirstLevel()];
-                board.drawLevel();
+                level = getLevel(gameLevel);
+                board = new Board(ball, level, paddle, ctx);
+                bricksCount = board.getBricksCount();
             }
 
             board.ball.reset();
@@ -131,28 +101,49 @@ function main() {
             ball.directionY = "up";
         }
 
-        board.checkBrickCollisions();
+        if(board.checkBrickCollisions()){
+            score+=10;
+            bricksCount--;
+        }
+
+        if(bricksCount == 0){
+            ctx.clearRect(0,0,CONSTANTS.canvas_width, CONSTANTS.canvas_height);
+            score += 100;
+            ball.nextLevel();
+            ball.reset();
+            paddle.reset();
+            gameLevel++;
+            board.level = getLevel(gameLevel);
+            bricksCount = board.getBricksCount();
+            board.draw();
+            isRunning = false;
+        }
     }
 
     function checkPaddleHitBallX() {
         let ballXend = ball.x + CONSTANTS.ball_size;
         let paddleXend = paddle.x + CONSTANTS.paddle_width;
 
-        return ball.x >= paddle.x && ball.x <= paddleXend ||
-            ballXend >= paddle.x && ballXend <= paddleXend
+        if (ball.x >= paddle.x && ball.x <= paddleXend ||
+            ballXend >= paddle.x && ballXend <= paddleXend) {
+            return true;
+        }
+
+        return false;
     }
 
     function checkPaddleHitBallY() {
         let ballYend = ball.y + CONSTANTS.ball_size;
 
-        return ballYend == paddle.y + 20
+        if (ballYend == paddle.y + 20) {
+            return true;
+        }
 
+        return false;
     }
+
 }
 
 window.onload = function () {
     main();
 };
-
-
-

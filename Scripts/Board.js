@@ -11,7 +11,19 @@ class Board extends GameObject {
         this.ball.draw();
         this.paddle.draw();
     }
-
+    
+    getBricksCount(){
+        let bricksCount = 0;
+        for (let i = 0; i < this.level.length; i++) {
+            for (let j = 0; j < this.level[i].length; j++) {
+                if (this.level[i][j] != "empty") {
+                   bricksCount++;
+                }
+            }
+        }
+        return bricksCount;
+    }
+    
     drawLevel() {
         for (let i = 0; i < this.level.length; i++) {
             for (let j = 0; j < this.level[i].length; j++) {
@@ -36,44 +48,86 @@ class Board extends GameObject {
                 brick.y = i * CONSTANTS.brick_height;
                 brick.x = j * CONSTANTS.brick_width;
                 if (this.level[i][j] != "empty" && this.isColide(brick)) {
-                        console.log("hited");
                     this.level[i][j] = "empty";
+                    return true;
                 }
             }
         }
 
+        return false;
     }
 
     isColide(brick) {
         let balX = this.ball.x + this.ball.radius;
         let balY = this.ball.y + this.ball.radius;
-        let deltaX = balX - Math.max(brick.x, Math.min(balX, brick.x + brick.w));
-        let deltaY = balY - Math.max(brick.y, Math.min(balY, brick.y + brick.h));
 
-        let result = (deltaX * deltaX + deltaY * deltaY) < (this.ball.radius * this.ball.radius);
-        if (!result) {
-            return result;
+        // check bottom
+        if(balX >= brick.x && balX <= brick.x + brick.w && this.ball.y > brick.y && this.ball.y <= brick.y + brick.h){
+            this.ball.directionY = "down";
+            return true;
         }
 
-        this.changeBallDirection(brick, balX, balY);
+        // check up
+        if(balX >= brick.x && balX <= brick.x + brick.w && this.ball.y + CONSTANTS.ball_size < brick.y + brick.h && this.ball.y + CONSTANTS.ball_size >= brick.y){
+            this.ball.directionY = "up";
+            return true;
+        }
 
-        return result;
+        // check left
+        if(balY >= brick.y && balY <= brick.y + brick.h && this.ball.x + CONSTANTS.ball_size < brick.x + brick.w && this.ball.x +  CONSTANTS.ball_size >= brick.x){
+            this.ball.directionX = "left";
+            return true;
+        }
+
+        // check right
+        if(balY >= brick.y && balY <= brick.y + brick.h && this.ball.x > brick.x && this.ball.x <= brick.x + brick.w){
+            this.ball.directionX = "right";
+            return true;
+        }
+
+        // bottom left corner
+        if(Board.calculate2dDistance(brick.x, brick.y + brick.h,  balX,balY) <= this.ball.radius){
+            this.ball.directionX = "left";
+            this.ball.directionY = "down";
+            return true;
+        }
+
+        // bottom right corner
+        if(Board.calculate2dDistance(brick.x + brick.w, brick.y + brick.h,  balX,balY) <= this.ball.radius){
+            this.ball.directionX = "right";
+            this.ball.directionY = "down";
+            return true;
+        }
+
+        // top right corner
+        if(Board.calculate2dDistance(brick.x + brick.w, brick.y,  balX,balY) <= this.ball.radius){
+            this.ball.directionX = "right";
+            this.ball.directionY = "up";
+            return true;
+        }
+
+        // top left corner
+        if(Board.calculate2dDistance(brick.x, brick.y,  balX,balY) <= this.ball.radius){
+            this.ball.directionX = "left";
+            this.ball.directionY = "up";
+            return true;
+        }
+
+
+        return false;
     }
 
-    changeBallDirection(brick, x2, y2) {
-        let x1 = (brick.x + brick.w) / 2;
-        let y1 = (brick.y + brick.h) / 2;
-        let dx = y1 - y2;
-        let dy = x1 - x2;
+    static calculate2dDistance(x1, y1, x2, y2){
+        return Math.sqrt((x1-x2)*(x1-x2) + (y1 - y2) * (y1 - y2));
+    }
 
-        if (dx < 0 && Math.abs(dx) > (brick.x / 2 + brick.w / 2)) {
-            this.ball.directionX = CONSTANTS.direction_left;
-        }else if (dx > 0 && Math.abs(dx) > (brick.x / 2 + brick.w / 2)) {
-            this.ball.directionX = CONSTANTS.direction_right;
-        }else if (dy < 0 && Math.abs(dy) > (brick.x / 2 + brick.w / 2)) {
-            this.ball.directionY = CONSTANTS.direction_down;
-        }else if (dy > 0 && Math.abs(dy) > (brick.x / 2 + brick.w / 2)) {
-            this.ball.directionX = CONSTANTS.direction_up;
+    checkLevelClear(){
+        for(let row of this.level){
+            if(row.filter(x => x!= "empty").length > 0){
+                return false;
+            }
         }
+
+        return true;
     }
 }
